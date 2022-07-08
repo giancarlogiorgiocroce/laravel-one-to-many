@@ -59,27 +59,23 @@
         </div>
     </div>
 
-    <h2 class="mb-4">Indice per categorie</h2>
-    @foreach ($categories as $category)
-        <h6>{{ $category->name }}</h6>
-        <ul style="list-style:none;">
-            @forelse ($category->posts as $post)
-                <li>
-                    <a href="{{ route('admin.posts.show', $post) }}">
-                            {{ $post->title }}
-                    </a>
-                </li>
-            @empty
-                <li>Questa categoria non ha post rilevanti</li>
-            @endforelse
-            {{-- @foreach ($posts as $post)
-                {{ dump($post->title) }}
-
-            @endforeach --}}
-            {{-- {{ dump($category->posts) }} --}}
-        </ul>
-
-    @endforeach
+    <div>
+        <h2 class="mb-4">Indice per categorie</h2>
+        @foreach ($categories as $category)
+            <h6>{{ $category->name }}</h6>
+            <ul style="list-style:none;">
+                @forelse ($category->posts as $post)
+                    <li>
+                        <a href="{{ route('admin.posts.show', $post) }}">
+                                {{ $post->title }}
+                        </a>
+                    </li>
+                @empty
+                    <li>Questa categoria non ha post rilevanti</li>
+                @endforelse
+            </ul>
+        @endforeach
+    </div>
 
 </div>
 @endsection
