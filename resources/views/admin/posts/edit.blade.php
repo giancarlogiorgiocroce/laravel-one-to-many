@@ -40,8 +40,8 @@
                 <option value="">Scegli di che tipo di gioco vuoi parlare</option>
                 @foreach ($categories as $category)
                     <option
-                        value="{{ old($category->id) }}"
-                        @if ($category->id == old('category_id', $post->category->id)) selected @endif>
+                        value="{{ $category->id }}"
+                        @if ($post->category && $category->id == old('category_id', $post->category->id)) selected @endif>
                             {{ $category->name }}
                     </option>
                 @endforeach
