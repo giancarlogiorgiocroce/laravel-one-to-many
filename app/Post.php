@@ -13,10 +13,10 @@ class Post extends Model
     }
 
     protected $fillable=[
-       "title",
-       "slug",
-        //"category_id",???
-       "content",
+        "title",
+        "slug",
+        "category_id",
+        "content",
     ];
 
     public static function generateSlug($title){

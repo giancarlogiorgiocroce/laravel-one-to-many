@@ -42,10 +42,11 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $post = $request->all();
-        $new_post = new Post;
-        $new_post->title = $post['title'];
+        $new_post = new Post();
+        $new_post->fill($post);
+        // $new_post->title = $post['title'];
         $new_post->slug = Post::generateSlug($new_post->title);
-        $new_post->content = $post['content'];
+        // $new_post->content = $post['content'];
         $new_post->save();
         return redirect()->route('admin.posts.index');
     }
@@ -71,8 +72,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
