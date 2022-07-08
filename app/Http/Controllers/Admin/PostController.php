@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -53,8 +54,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // admin/posts/10
     public function show(Post $post)
     {
+
         return view('admin.posts.show', compact('post'));
     }
 
