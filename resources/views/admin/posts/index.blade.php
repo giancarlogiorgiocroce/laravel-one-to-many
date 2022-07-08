@@ -22,6 +22,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
+            <th scope="col">Category</th>
             <th scope="col">Date</th>
             <th scope="col">Content</th>
             <th scope="col">Actions</th>
@@ -33,6 +34,7 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td>{{ $post->title }}</td>
+                <td>{{ $post->category ? $post->category->name : "Nessuna categoria" }}</td>
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->content }}</td>
                 <td class="d-flex">
@@ -56,6 +58,28 @@
             {{ $posts->links() }}
         </div>
     </div>
+
+    <h2 class="mb-4">Indice per categorie</h2>
+    @foreach ($categories as $category)
+        <h6>{{ $category->name }}</h6>
+        <ul style="list-style:none;">
+            @forelse ($category->posts as $post)
+                <li>
+                    <a href="{{ route('admin.posts.show', $post) }}">
+                            {{ $post->title }}
+                    </a>
+                </li>
+            @empty
+                <li>Questa categoria non ha post rilevanti</li>
+            @endforelse
+            {{-- @foreach ($posts as $post)
+                {{ dump($post->title) }}
+
+            @endforeach --}}
+            {{-- {{ dump($category->posts) }} --}}
+        </ul>
+
+    @endforeach
 
 </div>
 @endsection
